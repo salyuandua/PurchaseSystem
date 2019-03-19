@@ -9,7 +9,7 @@ import org.springframework.transaction.annotation.Transactional;
 import com.purchase.bean.Project;
 @Service
 @Transactional(rollbackFor=Exception.class)
-public class ProjectServiceImpl implements ProjectService{
+public class DefaultProjectService implements ProjectService{
 	
 	@Autowired
 	private ProjectDao projectDao;
@@ -19,12 +19,5 @@ public class ProjectServiceImpl implements ProjectService{
 		return projectDao.getAllProjects();
 	}
 
-	public ProjectDao getProjectDao() {
-		return projectDao;
-	}
-
-	public void setProjectDao(ProjectDao projectDao) {
-		this.projectDao = projectDao;
-	}
-
+	
 }

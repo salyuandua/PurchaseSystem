@@ -1,18 +1,26 @@
 package com.purchase.bean;
 
+import java.io.Serializable;
 import java.util.Set;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 @Entity
 @Table(name="project")
-public class Project {
+public class Project implements Serializable{
+
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 
 	@Id
 	@Column(name="project_id")
@@ -33,10 +41,13 @@ public class Project {
 	@Column(name="project_contact_email")
 	private String contactEmail;
 	
-	@OneToMany(targetEntity=Equipment.class,cascade=CascadeType.ALL)
+	@OneToMany(targetEntity=Equipment.class,cascade=CascadeType.ALL,fetch=FetchType.EAGER)
 	@JoinColumn(name="equipemnt_project")
 	private Set<Equipment> equipments;
 
+	@ManyToOne(cascade=CascadeType.ALL)
+	@JoinColumn(name="project_state")
+	private ProjectState state;
 	
 	public Project() {
 		// TODO Auto-generated constructor stub
@@ -103,6 +114,39 @@ public class Project {
 
 	public void setEquipments(Set<Equipment> equipments) {
 		this.equipments = equipments;
+	}
+
+
+
+	public int getId() {
+		return id;
+	}
+
+
+
+	public void setId(int id) {
+		this.id = id;
+	}
+
+
+
+	public ProjectState getState() {
+		return state;
+	}
+
+
+
+	public void setState(ProjectState state) {
+		this.state = state;
+	}
+
+
+
+	@Override
+	public String toString() {
+		return "Project [id=" + id + ", name=" + name + ", location=" + location + ", contactName=" + contactName
+				+ ", contactPhone=" + contactPhone + ", contactEmail=" + contactEmail + ", equipments=" + equipments
+				+ ", state=" + state + "]";
 	}
 	
 	

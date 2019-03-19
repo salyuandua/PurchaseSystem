@@ -10,27 +10,29 @@ import javax.persistence.Id;
 import javax.persistence.Table;
 
 @Entity
-@Table(name="equipment_state")
-public class EquipmentState implements Serializable{
+@Table(name="project_state")
+public class ProjectState implements Serializable{
+
 	/**
 	 * 
 	 */
 	private static final long serialVersionUID = 1L;
 
 	@Id
-	@Column(name="equipment_state_id")
+	@Column(name="project_state_id")
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private int id;
 	
-	@Column(name="equipment_state_name")
+	@Column(name="project_state_name")
 	private String name;
 
-	public EquipmentState() {
+	public ProjectState() {
 		// TODO Auto-generated constructor stub
 	}
 	
-	public EquipmentState(String name) {
+	public ProjectState(int id, String name) {
 		this();
+		this.id = id;
 		this.name = name;
 	}
 
@@ -52,8 +54,9 @@ public class EquipmentState implements Serializable{
 
 	@Override
 	public String toString() {
-		return "EquipmentState [id=" + id + ", name=" + name + "]";
+		return "ProjectState [id=" + id + ", name=" + name + "]";
 	}
+	
 	
 	
 	

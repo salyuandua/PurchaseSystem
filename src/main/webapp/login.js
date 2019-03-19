@@ -1,7 +1,7 @@
 $(function() {
 	$.fn.api.settings.api = {
 			"getSignup":"getSignup",
-			"signup":"account/signup"
+			"signup":"signup"
 			
 			};
 	//==============================sign up
@@ -19,7 +19,16 @@ $(function() {
 					var signinForm=$("#signinForm");
 					
 					signinForm.form({
+						//=================validating rules====================
 						fields:{
+							firstName:{
+								rules:[{type:"empty",prompt:"Please enter your first name"}]
+							},
+							lastName:{
+								rules:[{type:"empty",prompt:"Please enter your last name"}]
+							},
+							
+							
 							email:{
 								rules:[{type:"empty",prompt:"Please enter email"},{type:"email",prompt:"Please enter vaild email"}]
 								
@@ -45,6 +54,8 @@ $(function() {
 								on:"now",
 								method:"POST",
 								onComplete:function(res){
+									
+									
 									
 								}
 								
@@ -126,44 +137,6 @@ $(function() {
 	
 
       $('.ui.accordion').accordion();		
-//      $('.ui.form')
-//        .form({
-//          fields: {
-//            email: {
-//              identifier  : 'email',
-//              rules: [
-//                {
-//                  type   : 'empty',
-//                  prompt : 'Please enter your e-mail'
-//                },
-//                {
-//                  type   : 'email',
-//                  prompt : 'Please enter a valid e-mail'
-//                }
-//              ]
-//            },
-//            password: {
-//              identifier  : 'password',
-//              rules: [
-//                {
-//                  type   : 'empty',
-//                  prompt : 'Please enter your password'
-//                },
-//                {
-//                  type   : 'length[6]',
-//                  prompt : 'Your password must be at least 6 characters'
-//                }
-//              ]
-//            }
-//          }
-//        });
-//      $.fn.form.settings.on='click';
-//      $('.ui.form').submit(function(e){
-//    	  console.log("submit");
-//    	  return false;
-//      });
-      
-      
-      
+
       
     });

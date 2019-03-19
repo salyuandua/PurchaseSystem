@@ -15,7 +15,7 @@ private CommonService commonService;
 
 @GetMapping(value="/home")
 public String home(Model model) {
-	model.addAttribute("roles", commonService.getAccountRoles());
+	//model.addAttribute("roles", commonService.getAccountRoles());
 	
 	
 	

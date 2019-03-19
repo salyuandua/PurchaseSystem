@@ -77,7 +77,7 @@
 		  return false;
 		};
 	//load first level segment
-		window.utils.loadContent=function(url,content_seg){
+		window.utils.loadContent=function(url,content_seg,success){
 			var content$=$(content_seg);
 			//set segment to loading
 			content$.removeClass("loading").addClass("loading")
@@ -88,7 +88,7 @@
 					content$.children().remove();
 					content$.append(data);
 					content$.removeClass("loading");
-					
+					success(data);
 
 				},
 				error:function(){

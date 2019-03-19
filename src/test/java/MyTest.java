@@ -8,6 +8,7 @@ import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
 import com.purchase.account.AccountService;
 import com.purchase.bean.AccountRole;
+import com.purchase.bean.Project;
 import com.purchase.common.CommonService;
 import com.purchase.project.ProjectService;
 
@@ -17,6 +18,9 @@ public class MyTest {
 
 	@Autowired
 	private CommonService commonService;
+	
+	@Autowired
+	private ProjectService projectService;
 
 	@Test
 	public void testCommonService() {
@@ -24,6 +28,17 @@ public class MyTest {
 		System.out.println(roles);
 		
 	}
+	
+	@Test
+	public void testPorjectService() {
+		List<Project> projects=projectService.getAllProjects();
+//		projects.get(0).getEquipments().forEach(e->{
+//			System.out.println(e.getName());
+//			
+//		});
+		System.out.println(projects);
+	}
+	
 	
 	
 }

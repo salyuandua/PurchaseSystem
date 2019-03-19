@@ -6,10 +6,12 @@ import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
+import org.springframework.transaction.annotation.Transactional;
 
 import com.purchase.bean.Project;
 @Repository
-public class ProjectDaoImpl implements ProjectDao{
+@Transactional(rollbackFor=Exception.class)
+public class DefaultProjectDao implements ProjectDao{
 
 	@Autowired
 	private SessionFactory sessionFactory;

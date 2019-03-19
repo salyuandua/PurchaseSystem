@@ -1,0 +1,30 @@
+
+
+
+<div class="ui cards">
+	<div class="ui raised blue card" th:each="project : ${projects}">
+	  <div class="content">
+	    <div class="header" >
+	    	<span th:text="${project.name}"></span>
+	    	 <span class="right floated"><div class="'ui ' +${project.state.name}  label" th:text="${project.state.name}"></div></span>
+	    </div>
+	    <div class="meta">
+	      <span class="category" >
+	      	
+	      	<span th:text="${project.location}"></span>
+	      </span>
+	    </div>
+	    <div class="description">
+	      <p ><i class="user icon"></i><span th:text="${project.contactName}"></span></p>
+	      <p ><i class="phone icon"></i><span th:text="${project.contactPhone}"></span></p>
+	      <p ><i class="envelope icon"></i><span th:text="${project.contactEmail}"></span></p>
+	    </div>
+	  </div>
+	  <div class="extra content">
+		<a>
+	      <i class="industry icon"></i>
+	      <span th:text="${project.equipments.size()}+' equipments contained'"></span>
+	    </a>
+	  </div>
+</div>
+</div>

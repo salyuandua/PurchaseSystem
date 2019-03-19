@@ -52,7 +52,8 @@
 
 <tx:annotation-driven  transaction-manager="transactionManager" />      
  
- <!-- thymeleaf conf       -->  
+ <!-- thymeleaf conf       
+ -->  
 <bean id="templateResolver"
        class="org.thymeleaf.templateresolver.ServletContextTemplateResolver">
   <property name="prefix" value="/WEB-INF/templates/" />
@@ -72,7 +73,6 @@
 
 <mvc:default-servlet-handler/>
 <mvc:annotation-driven></mvc:annotation-driven>
- 
 
 
 </beans>

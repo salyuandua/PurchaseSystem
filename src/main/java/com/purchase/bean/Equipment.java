@@ -1,5 +1,6 @@
 package com.purchase.bean;
 
+import java.io.Serializable;
 import java.util.Date;
 
 import javax.persistence.CascadeType;
@@ -14,7 +15,12 @@ import javax.persistence.Table;
 
 @Entity
 @Table(name="equipment")
-public class Equipment {
+public class Equipment implements Serializable{
+
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 
 	@Id
 	@Column(name="equipment_id")
@@ -75,6 +81,12 @@ public class Equipment {
 
 	public void setTrackNumber(String trackNumber) {
 		this.trackNumber = trackNumber;
+	}
+
+	@Override
+	public String toString() {
+		return "Equipment [id=" + id + ", name=" + name + ", size=" + size + ", equipmentState=" + equipmentState
+				+ ", mannufacturDate=" + mannufacturDate + ", trackNumber=" + trackNumber + "]";
 	}
 	
 	
