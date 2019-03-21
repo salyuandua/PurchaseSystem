@@ -5,39 +5,17 @@
 		<div class="ui form" >
 			<div id="submit_grant_segment" class="ui piled segment">
 	  			<h3 class="ui dividing header blue">Project Information</h3>
-	  			  <div class=" field">
-    				
-    					<div class="three fields">
-	    					<div class="required field">
-	    					<label>Project Name:</label>
-	       						 <input   type="text" name="name" placeholder="Project Name" >
-	      					</div>
-	      					<div class="field">
-	      					<label>Project Location:</label>
-	       						 <input type="text" name="location"  placeholder="Project Location">
-	      					</div>
-	      					 <div class="field">
-	      					<label> Amount of Funding 
-	      					</label>
-	       						 <input type="text" name="amount_fund"  placeholder="Amount of Funding" >
-	      					</div>
-
-      					
-    					</div>
-    		  	</div>
-    		  	
-    		  	<div class="field">
-    		  		<div class="three fields">
-    		  			<div class="required field">
-	    					<label>Contact Name:</label>
-	       					<input   type="text" name="contactName" placeholder="Contact Name" >
-	      				</div>	
-    		  		
-    		  		</div>
-    		  	</div>
-    		  	
-    		  	
-	 
+				
+				<div th:replace="~{/project/project_info :: project_info (null)}"></div>
+				
+					
+    		  	<h3 class="ui dividing header blue">Equipments</h3>
+				<div th:replace="~{/equipment/equipment_table :: equipment_table (null)}"></div>
+    		  	  	<div class="field" style="margin-top: 1%">
+    		 			<button class="circular ui icon positive button" id="add_equipment">
+  							<i class="icon  plus"></i>
+						</button>
+					</div>
 			</div>
 
 </div>

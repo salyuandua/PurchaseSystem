@@ -17,14 +17,14 @@
 		
 		mainModel$.children().remove();
 		mainModel$.append(html);
-		mainModel$.model({
+		mainModel$.modal({
 			onVisible:function(){
 				init();
 				
 			}
 			
 			
-		}).model("show");
+		}).modal("show");
 		
 		
 		return mainModel$;

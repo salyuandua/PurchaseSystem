@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+	  			<div th:fragment="project_info(project)">	
+	  			  <div class=" fields">
+    				
+    					
+	    					<div class="five wide required field">
+	    					<label>Project Name:</label>
+	       						 <input th:if="${project}==null"  type="text" name="name" placeholder="Project Name" >
+	      					</div>
+	      					<div class="ten wide required field">
+	      					<label>Project Location:</label>
+	       						 <input th:if="${project}==null" type="text" name="location"  placeholder="Project Location">
+	      					</div>
+    		  	</div>
+    		  	
+    		  	<div class="fields">
+    		  		
+    		  			<div class="five wide required field">
+	    					<label>Contact Name:</label>
+	       					<input th:if="${project}==null"  type="text" name="contactName" placeholder="Contact Name" >
+	      				</div>	
+    		  		    <div class="five wide required field">
+	    					<label>Contact Phone:</label>
+	       					<input th:if="${project}==null"  type="text" name="contactPhone" placeholder="Contact Name" >
+	      				</div>	
+	      				 <div class="five wide required field">
+	    					<label>Contact Email:</label>
+	       					<input th:if="${project}==null"  type="text" name="contactEmail" placeholder="Contact Name" >
+	      				</div>	
+    		  		
+    		  	</div>
+    		  	
+    		  	<div class="field">
+    		  		<label>Notes:</label>
+    		  		<textarea th:if="${project}==null" rows="3" cols=""></textarea>
+    		  	</div>
+    		  	</div>
+</html>
