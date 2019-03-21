@@ -1,9 +1,5 @@
 $(function() {
-	$.fn.api.settings.api = {
-			"getSignup":"getSignup",
-			"signup":"signup"
-			
-			};
+
 	//==============================sign up
 	$("#signupLink").api({
 		action:"getSignup",

@@ -27,4 +27,12 @@ public class ProjectController {
 		return "/project/projects";
 	}
 
+	
+	@RequestMapping("/getAddPage")
+	public String getAddProject() {
+		
+		return "/project/addProject";
+	}
+	
+	
 }

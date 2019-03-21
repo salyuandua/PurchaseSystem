@@ -1,12 +1,14 @@
 
+    <div  class="ui small positive labeled icon button" style="margin-top: 1%">
+          <i class="plus icon"></i> Start a Project aa
+  </div> 
 
-
-<div class="ui cards">
+<div class="ui cards" style="margin-top: 1%">
 	<div class="ui raised blue card" th:each="project : ${projects}">
 	  <div class="content">
 	    <div class="header" >
 	    	<span th:text="${project.name}"></span>
-	    	 <span class="right floated"><div class="'ui ' +${project.state.name}  label" th:text="${project.state.name}"></div></span>
+	    	 <span class="right floated"><div class="ui red label" th:text="${project.state.name}"></div></span>
 	    </div>
 	    <div class="meta">
 	      <span class="category" >
@@ -28,3 +30,26 @@
 	  </div>
 </div>
 </div>
+  <script type="text/javascript">
+  	$(function(){
+  		//==============add project
+  		$(".ui.small.positive.labeled.icon.button").api({
+  			action:"addProjectPage",
+  			onComplete:function(res){
+  				utils.loadMainModel(res,function(){
+  					
+  				})
+  				
+  				
+  			}
+  			
+  		});
+  		
+  		
+  		
+  	});
+  
+  
+  </script>
+
+
