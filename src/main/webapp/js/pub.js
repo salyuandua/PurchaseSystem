@@ -7,6 +7,21 @@
 			"addProjectPage":"project/getAddPage"
 			};
 	
+	//define some doms
+	window.utils.dom={
+		equipment_table_tr:"<tr>"+
+						"<th><div class='ui fluid input'><input type='text' placeholder=''></div></th>"+
+						"<th><div class='ui fluid input'><input type='text' placeholder=''></div></th>"+
+						"<th><div class='ui fluid input'><input type='text' placeholder=''></div></th>"+
+						"<th style='width: 1%'><button class='mini red ui button'>Delete</button></th>"+
+					    "</tr>"	
+			
+	};
+	
+	
+	
+	
+	
 	//load main modal
 	window.utils.loadMainModel=function(html,init){
 		var mainModel$=$("#mainModel");

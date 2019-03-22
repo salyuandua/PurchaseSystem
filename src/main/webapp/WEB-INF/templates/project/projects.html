@@ -5,7 +5,14 @@
 
 <div class="ui cards" style="margin-top: 1%">
 	<div class="ui raised blue card" th:each="project : ${projects}">
-	  <div class="content">
+	   	
+	
+	  <div class="content" name="card_content">
+	   <div class="ui dimmer">
+		    <div class="content">
+		      <div class="ui primary button">Submit to Fin</div>
+		    </div>
+  		</div>
 	    <div class="header" >
 	    	<span th:text="${project.name}"></span>
 	    	 <span class="right floated"><div class="ui red label" th:text="${project.state.name}"></div></span>
@@ -23,7 +30,7 @@
 	    </div>
 	  </div>
 	  <div class="extra content">
-		<a>
+		<a >
 	      <i class="industry icon"></i>
 	      <span th:text="${project.equipments.size()}+' equipments contained'"></span>
 	    </a>
@@ -32,13 +39,32 @@
 </div>
   <script type="text/javascript">
   	$(function(){
+  		$("div[name='card_content']")
+  	  .dimmer({
+  	    on: 'hover'
+  	  })
+  	;
+  		
   		//==============add project
   		$(".ui.small.positive.labeled.icon.button").api({
   			action:"addProjectPage",
   			onComplete:function(res){
-  				utils.loadMainModel(res,function(){
+  				var mainModal$= utils.loadMainModel(res,function(){
+  					$("#add_equipment").click(function(){//add an equipment
+  						$("#equipment_tbody").append(utils.dom.equipment_table_tr);
+  						
+  					});
   					
-  				})
+  					
+  					
+  				});
+  				
+  				mainModal$.modal({
+  					onApprove:function(){
+  						console.log("approve")
+  					}
+  					
+  				});
   				
   				
   			}
