@@ -1,16 +1,24 @@
 <!DOCTYPE html>
 <html>
-    		  	<table id="equipment_table" class="ui celled table" th:fragment="equipment_table(equipments)">
+	
+
+    		  	<table id="equipment_table" class="ui celled table" th:fragment="equipment_table(project)">
 				  <thead>
 				    <tr>
 					    <th >Name</th>
 					    <th>Size</th>
-					    <th>Job</th>
-					    <th>Action</th>
+					    <th>Date</th>
+					    <th>Price</th>
 				  </tr>
 				  </thead>
 				  <tbody id="equipment_tbody">
-					
+					<tr th:each="equipment : ${project.equipments}">
+						<td th:text="${equipment.name}"></td>
+						<td th:text="${equipment.size}"></td>
+						<td ></td>
+						<td th:text="${equipment.price}"></td>
+					</tr>
 				  </tbody>
 				</table>
+	
 </html>

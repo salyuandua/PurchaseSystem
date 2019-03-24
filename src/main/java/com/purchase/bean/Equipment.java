@@ -43,6 +43,26 @@ public class Equipment implements Serializable{
 	@Column(name="equipment_track_num")
 	private String trackNumber;
 
+	@Column(name="equipment_price")
+	private double price;
+	
+	
+	public int getId() {
+		return id;
+	}
+
+	public void setId(int id) {
+		this.id = id;
+	}
+
+	public double getPrice() {
+		return price;
+	}
+
+	public void setPrice(double price) {
+		this.price = price;
+	}
+
 	public String getName() {
 		return name;
 	}

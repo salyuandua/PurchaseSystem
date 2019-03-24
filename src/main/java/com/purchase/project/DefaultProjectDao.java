@@ -43,5 +43,14 @@ public class DefaultProjectDao implements ProjectDao{
 		this.sessionFactory = sessionFactory;
 	}
 
+
+
+	@Override
+	public Project getPorjectById(int id) {
+		Session session=sessionFactory.getCurrentSession();
+		
+		return session.get(Project.class, id);
+	}
+
 	
 }

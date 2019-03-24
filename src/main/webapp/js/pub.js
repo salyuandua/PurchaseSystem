@@ -4,7 +4,8 @@
 	$.fn.api.settings.api = {
 			"getSignup":"getSignup",
 			"signup":"signup",
-			"addProjectPage":"project/getAddPage"
+			"addProjectPage":"project/getAddPage",
+			"getProject":"project/{id}"
 			};
 	
 	//define some doms

@@ -7,4 +7,6 @@ import com.purchase.bean.Project;
 public interface ProjectService {
 
 	public List<Project> getAllProjects();
+	
+	public Project getPorjectById(int id);
 }

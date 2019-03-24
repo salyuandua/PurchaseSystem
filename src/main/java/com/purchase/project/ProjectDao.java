@@ -8,4 +8,6 @@ public interface ProjectDao {
 
 	
 	public List<Project> getAllProjects();
+	
+	public Project getPorjectById(int id);
 }

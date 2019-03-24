@@ -30,7 +30,7 @@
 	    </div>
 	  </div>
 	  <div class="extra content">
-		<a >
+		<a href="javascript:void(0)" name="equipment_a" th:data-id="${project.id}">
 	      <i class="industry icon"></i>
 	      <span th:text="${project.equipments.size()}+' equipments contained'"></span>
 	    </a>
@@ -42,8 +42,50 @@
   		$("div[name='card_content']")
   	  .dimmer({
   	    on: 'hover'
-  	  })
-  	;
+  	  });
+  	  
+  		//check equipment table 
+  		
+  		$("a[name=equipment_a]").api({
+  			action:"getProject",
+  			onComplete:function(res){
+  				
+  				
+  				var popupa$=$(this);
+  				
+  				var content$=$(res);
+  				
+  				//console.log(content$.find("button[id=cancel_eq]"))
+  				
+  				
+  				popupa$.popup({
+  					closable:false,
+  					on:"manual",
+  				    html:content$,
+  				    onCreate:function(e){
+  				    	content$.find("button[id=cancel_eq]").click(function(){
+  				    		
+  				    		
+  				    	});
+  				    },
+  				    
+  				  	onHidden:function($popup){
+  				  		console.log("hide!");
+  				  		$popup.popup("destroy");
+  				  		
+  				  	}
+  				  }).popup("show");
+  				
+  				
+  				
+  			}
+  			
+  			
+  		});
+  		
+  		
+  		
+  		
   		
   		//==============add project
   		$(".ui.small.positive.labeled.icon.button").api({

@@ -19,5 +19,12 @@ public class DefaultProjectService implements ProjectService{
 		return projectDao.getAllProjects();
 	}
 
+
+	@Override
+	public Project getPorjectById(int id) {
+		// TODO Auto-generated method stub
+		return projectDao.getPorjectById(id);
+	}
+
 	
 }

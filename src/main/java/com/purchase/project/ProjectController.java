@@ -5,6 +5,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.purchase.bean.Project;
@@ -32,6 +33,13 @@ public class ProjectController {
 	public String getAddProject() {
 		
 		return "/project/addProject";
+	}
+	
+	@RequestMapping("/{id}")
+	public String getProject(@PathVariable int id,Model model) {
+		Project p= projectService.getPorjectById(id);
+		model.addAttribute("project",p);
+		return "/equipment/equipments_container";
 	}
 	
 	
