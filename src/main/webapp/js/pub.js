@@ -5,7 +5,8 @@
 			"getSignup":"getSignup",
 			"signup":"signup",
 			"addProjectPage":"project/getAddPage",
-			"getProject":"project/{id}"
+			"getProject":"project/{id}",
+			"updateEquipments":"project/updateEquipments"
 			};
 	
 	//define some doms

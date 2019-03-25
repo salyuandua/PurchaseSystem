@@ -15,8 +15,8 @@
 					<tr th:each="equipment : ${project.equipments}">
 						<td th:text="${equipment.name}"></td>
 						<td th:text="${equipment.size}"></td>
-						<td ></td>
-						<td th:text="${equipment.price}"></td>
+						<td ><div class="ui fluid input"><input type="date" name="mannufacturDate" th:value="${equipment.mannufacturDate}"></div></td>
+						<td ><div  class="ui fluid input" ><input type="text" name="price" th:value="${equipment.price}"></div></td>
 					</tr>
 				  </tbody>
 				</table>

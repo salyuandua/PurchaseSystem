@@ -63,17 +63,45 @@
   					on:"manual",
   				    html:content$,
   				    onCreate:function(e){
-  				    	content$.find("button[id=cancel_eq]").click(function(){
-  				    		
+  				    	//form validate
+  				    	var eq_form$=content$.find("#eq_form");
+  				    	eq_form$.form({
+  				    		fields:{
+  				    			price:["empty","decimal"],
+  				    			mannufacturDate:"empty"
+  				    			
+  				    		}
   				    		
   				    	});
-  				    },
-  				    
-  				  	onHidden:function($popup){
-  				  		console.log("hide!");
-  				  		$popup.popup("destroy");
-  				  		
-  				  	}
+  				    	
+  				    	
+  				    	
+  				    	
+  				    	
+  				    	//=================cancel button
+  				    	content$.find("button[id=cancel_eq]").click(function(){
+  				    		popupa$.popup("remove popup")
+  				    		
+  				    	});
+  				    	//===================update button
+  				    	content$.find("button[id=update_eq]").api({
+  				    		action:"updateEquipments",
+  				    		beforeSend:function(){
+  				    			
+  				    			
+  				    		}
+  				    		onComplete:function(res){
+  				    			
+  				    			
+  				    		}
+  				    		
+  				    	});
+  				    	
+  				    	
+  				    	
+  				    	
+  				    }
+
   				  }).popup("show");
   				
   				

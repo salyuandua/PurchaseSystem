@@ -13,6 +13,8 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
+
 @Entity
 @Table(name="equipment")
 public class Equipment implements Serializable{
@@ -38,6 +40,7 @@ public class Equipment implements Serializable{
 	private EquipmentState equipmentState;
 	
 	@Column(name="equipment_manuf_date")
+	@JsonFormat(pattern="yyyy-MM-dd")
 	private Date mannufacturDate;
 	
 	@Column(name="equipment_track_num")
