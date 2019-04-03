@@ -12,6 +12,8 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
 
@@ -39,8 +41,9 @@ public class Equipment implements Serializable{
 	@JoinColumn(name="equipment_state")
 	private EquipmentState equipmentState;
 	
-	@Column(name="equipment_manuf_date")
-	@JsonFormat(pattern="yyyy-MM-dd")
+	@Column(name="equipment_manuf_date",length=10)
+	@Temporal(TemporalType.DATE)
+	//@JsonFormat(pattern="yyyy-MM-dd")
 	private Date mannufacturDate;
 	
 	@Column(name="equipment_track_num")

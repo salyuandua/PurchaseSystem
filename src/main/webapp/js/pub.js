@@ -6,15 +6,16 @@
 			"signup":"signup",
 			"addProjectPage":"project/getAddPage",
 			"getProject":"project/{id}",
+			"submitProject":"project/submit",
 			"updateEquipments":"project/updateEquipments"
 			};
 	
 	//define some doms
 	window.utils.dom={
 		equipment_table_tr:"<tr>"+
-						"<th><div class='ui fluid input'><input type='text' placeholder=''></div></th>"+
-						"<th><div class='ui fluid input'><input type='text' placeholder=''></div></th>"+
-						"<th><div class='ui fluid input'><input type='text' placeholder=''></div></th>"+
+						"<th><div class='field'><div class='ui fluid input'><input type='text' placeholder='Name'></div></div></th>"+
+						"<th><div class='field'><div class='ui fluid input'><input type='text' placeholder='Size'></div></th>"+
+						"<th><div class='field'><div class='ui fluid input'><input type='date' placeholder='Manufacture Date'></div></th>"+
 						"<th style='width: 1%'><button class='mini red ui button'>Delete</button></th>"+
 					    "</tr>"	
 			

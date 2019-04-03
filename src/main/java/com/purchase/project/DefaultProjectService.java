@@ -8,7 +8,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import com.purchase.bean.Project;
 @Service
-@Transactional(rollbackFor=Exception.class)
+//@Transactional(rollbackFor=Exception.class)
 public class DefaultProjectService implements ProjectService{
 	
 	@Autowired
@@ -24,6 +24,14 @@ public class DefaultProjectService implements ProjectService{
 	public Project getPorjectById(int id) {
 		// TODO Auto-generated method stub
 		return projectDao.getPorjectById(id);
+	}
+
+
+	@Override
+	public boolean submit(Project project) {
+		// TODO Auto-generated method stub
+		
+		return projectDao.submit(project);
 	}
 
 	

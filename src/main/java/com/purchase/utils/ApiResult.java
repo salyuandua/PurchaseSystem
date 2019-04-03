@@ -1,13 +1,13 @@
 package com.purchase.utils;
 
 public class ApiResult {
-	public static final int OK=200;
+//	public static final int OK=200;
+//	public static final int validateError=500;
 	
 	
 	
 	
-	
-	private int code;
+	//private int code;
 	private boolean success;
 	private String message;
 	private Object data;
@@ -16,18 +16,13 @@ public class ApiResult {
 	
 	
 	
-	public ApiResult(int code, boolean success) {
-		this.code = code;
+	public ApiResult(boolean success,String message) {
+		
 		this.success = success;
+		this.message=message;
 	}
 	
-	
-	public int getCode() {
-		return code;
-	}
-	public void setCode(int code) {
-		this.code = code;
-	}
+
 	public boolean isSuccess() {
 		return success;
 	}

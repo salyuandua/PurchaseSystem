@@ -62,46 +62,9 @@
   					closable:false,
   					on:"manual",
   				    html:content$,
-  				    onCreate:function(e){
-  				    	//form validate
-  				    	var eq_form$=content$.find("#eq_form");
-  				    	eq_form$.form({
-  				    		fields:{
-  				    			price:["empty","decimal"],
-  				    			mannufacturDate:"empty"
-  				    			
-  				    		}
-  				    		
-  				    	});
-  				    	
-  				    	
-  				    	
-  				    	
-  				    	
-  				    	//=================cancel button
-  				    	content$.find("button[id=cancel_eq]").click(function(){
-  				    		popupa$.popup("remove popup")
-  				    		
-  				    	});
-  				    	//===================update button
-  				    	content$.find("button[id=update_eq]").api({
-  				    		action:"updateEquipments",
-  				    		beforeSend:function(){
-  				    			
-  				    			
-  				    		}
-  				    		onComplete:function(res){
-  				    			
-  				    			
-  				    		}
-  				    		
-  				    	});
-  				    	
-  				    	
-  				    	
-  				    	
+  				    onShow:function(){
+  				    	utils.dom.showingPopup=popupa$;
   				    }
-
   				  }).popup("show");
   				
   				
@@ -115,26 +78,107 @@
   		
   		
   		
-  		//==============add project
+  		//======================================add project
   		$(".ui.small.positive.labeled.icon.button").api({
   			action:"addProjectPage",
   			onComplete:function(res){
   				var mainModal$= utils.loadMainModel(res,function(){
+  					//init form
+  					var project_form$=$("#project_form");
+  					project_form$.form({
+  						fields:{
+  							name:"empty",
+  							location:"empty",
+  							contactName:"empty",
+  							contactPhone:"empty",
+  							contactEmail:"empty"
+  						},
+  						debug:true
+
+  					});
+  					
+  					
   					$("#add_equipment").click(function(){//add an equipment
-  						$("#equipment_tbody").append(utils.dom.equipment_table_tr);
+  						var tr$=$(utils.dom.equipment_table_tr);
+  						//count how many tr tbody has	
+  						var tr_count=$("#equipment_tbody").children().length;
+						//bind name for input
+						tr$.find("input:eq(0)").attr("name","eq_name_"+tr_count);
+						tr$.find("input:eq(1)").attr("name","eq_size_"+tr_count);
+						tr$.find("input:eq(2)").attr("name","eq_date_"+tr_count);
+						//bind delete button
+						tr$.find("button").click(function(){
+							//console.log("hahah")
+							tr$.remove();
+							
+						});
+
+  						//append tr
+  						$("#equipment_tbody").append(tr$);
+  						//add rules for input
+  						
+  						
+  						
+  						//project_form$.form("add validation",tr$.find("input:eq(0)"),{'type': 'empty', 'prompt': 'This field must contain a value'});
+  						//console.log(tr$.find("input:eq(0)"))
+  						//var fields=["eq_name_0"];
+  						
+  						//project_form$.form("add fields",["eq_name_0"]);
+  						//console.log(project_form$.form("get values"))
+  						//project_form$.form("add rule","eq_name_"+tr_count,{rules:[{type:"empty",prompt:"lelele"}]});
+  						//form("add rule","eq_size_"+tr_count,"empty").
+  						//form("add rule","eq_date_"+tr_count,"empty");
+  						//console.log(project_form$.form("has field","eq_name_0"));
+  					});
+  					
+  					//submit button
+  					$("#submit_project").api({
+  						action:"submitProject",
+  						method:"POST",
+  					    beforeXHR: function(xhr) {
+  					      // adjust XHR with additional headers
+  					      xhr.setRequestHeader ('Content-Type', 'application/json');
+  					      return xhr;
+  					    },
+  						
+  						
+  						beforeSend:function(settings){
+  							project_form$.form("validate form");
+  							var tr$=$("#equipment_tbody").children()
+  							if(!project_form$.form("is valid")||tr$.length==0){
+  								return false;
+  							}
+  							//validate success
+  							console.log(project_form$.form("get values"))
+  							var project=project_form$.form("get values");
+  							project.equipments=[];
+  							$.each(tr$,function(i,v){
+  								var equipment={};
+  								equipment.name=$(v).find("input:eq(0)").val();
+  								equipment.size=$(v).find("input:eq(1)").val();
+  								equipment.mannufacturDate=$(v).find("input:eq(2)").val();
+  								project.equipments.push(equipment);
+  								
+  							});
+  							settings.data=JSON.stringify(project);
+  							console.log(settings)
+  							return settings;
+  							
+  						},
+  						onComplete:function(res){
+  							
+  							
+  						}
   						
   					});
   					
   					
   					
-  				});
-  				
-  				mainModal$.modal({
-  					onApprove:function(){
-  						console.log("approve")
-  					}
+  					
+  					
   					
   				});
+
   				
   				
   			}

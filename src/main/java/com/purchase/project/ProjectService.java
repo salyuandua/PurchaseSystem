@@ -9,4 +9,6 @@ public interface ProjectService {
 	public List<Project> getAllProjects();
 	
 	public Project getPorjectById(int id);
+	
+	public boolean submit(Project project);
 }

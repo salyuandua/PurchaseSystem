@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html>
-	<div class="ui form" style="width: 900px" id="eq_form">
+	<form class="ui form" style="width: 900px" id="eq_form">
 		<h3 class="header">Equipments</h3>
 			<div th:replace="~{/equipment/equipment_table :: equipment_table (${project})}"></div>
 			
@@ -11,14 +11,52 @@
 			<button class="circular ui icon red button" id="cancel_eq" >
 		  		<i class="icon close"></i>
 			</button>
-	</div>
+	</form>
 	
 	<script type="text/javascript">
 	$(function(){
 		//cancel_eq
-		
-		
-		
+		//console.log(utils.dom.showingPopup);
+	    	
+	    	//=================cancel button
+	    	$("button[id=cancel_eq]").click(function(){
+	    		utils.dom.showingPopup.popup("remove popup")
+	    		
+	    	});
+	    	
+		    	//form validate
+		    	var eq_form$=$("form[id=eq_form]");
+		    	eq_form$.form({
+		    		fields:{
+		    			price:["empty","decimal"],
+		    			mannufacturDate:"empty",
+		    				trackNumber:"empty"
+		    		}
+		    		
+		    	});
+	    	
+		    	//===================update button
+		    	$("button[id=update_eq]").api({
+		    		action:"updateEquipments",
+		    		method:"post",
+		    		beforeSend:function(settings){
+		    			console.log(eq_form$.form("is valid"));
+		    			eq_form$.form("validate form");
+		    			if(!eq_form$.form("is valid")){
+		    				return false;
+		    			}
+		    			//validate success
+		    			settings.data=eq_form$.form("get values");
+		    			return true;
+		    			
+		    			
+		    		},
+		    		onComplete:function(res){
+		    			
+		    			
+		    		}
+		    		
+		    	});
 		
 		
 	});

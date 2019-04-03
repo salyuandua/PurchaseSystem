@@ -2,7 +2,7 @@
     Start a Project
   </div>
   <div class="content" style="background-color: #DADADA;">
-		<div class="ui form" >
+		<div class="ui form" id="project_form">
 			<div id="submit_grant_segment" class="ui piled segment">
 	  			<h3 class="ui dividing header blue">Project Information</h3>
 				
@@ -10,7 +10,7 @@
 				
 					
     		  	<h3 class="ui dividing header blue">Equipments</h3>
-				<div th:replace="~{/equipment/equipment_table :: equipment_table (null)}"></div>
+				<div th:replace="~{/equipment/equipment_table_empty :: equipment_table (null)}"></div>
 				
     		  	  	<div class="field" style="margin-top: 1%">
     		 			<button class="circular ui icon positive button" id="add_equipment">
@@ -27,7 +27,7 @@
       Cancel
     </div>
     
-    <div class="ui green ok  labeled icon button" >
+    <div class="ui green labeled icon button" id="submit_project">
      Submit
       <i class="checkmark icon"></i>
     </div>

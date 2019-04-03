@@ -7,11 +7,15 @@ import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.Size;
 
 @Entity
 @Table(name="project")
@@ -24,23 +28,30 @@ public class Project implements Serializable{
 
 	@Id
 	@Column(name="project_id")
+	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private int id;
 	
+	@NotBlank
 	@Column(name="project_name")
 	private String name;
 	
+	@NotBlank
 	@Column(name="project_location")
 	private String location;
 	
+	@NotBlank
 	@Column(name="project_contact_name")
 	private String contactName;
 	
+	@NotBlank
 	@Column(name="project_contact_phone")
 	private String contactPhone;
 	
+	@NotBlank
 	@Column(name="project_contact_email")
 	private String contactEmail;
 	
+	@Size(min=1)
 	@OneToMany(targetEntity=Equipment.class,cascade=CascadeType.ALL,fetch=FetchType.EAGER)
 	@JoinColumn(name="equipemnt_project")
 	private Set<Equipment> equipments;
@@ -50,7 +61,9 @@ public class Project implements Serializable{
 	private ProjectState state;
 	
 	public Project() {
-		// TODO Auto-generated constructor stub
+		//set default state
+		state=new ProjectState();
+		state.setId(1);
 	}
 	
 	

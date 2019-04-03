@@ -52,5 +52,26 @@ public class DefaultProjectDao implements ProjectDao{
 		return session.get(Project.class, id);
 	}
 
+
+
+	@Override
+	public void transferState() {
+		// TODO Auto-generated method stub
+		
+	}
+
+
+
+	@Override
+	public boolean submit(Project project) {
+		Session session=sessionFactory.getCurrentSession();
+		Integer id=(Integer) session.save(project);
+		//System.out.println(id);
+		if(id==0) {
+			return false;
+		}
+		return true;
+	}
+
 	
 }

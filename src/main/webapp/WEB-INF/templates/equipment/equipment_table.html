@@ -7,16 +7,30 @@
 				    <tr>
 					    <th >Name</th>
 					    <th>Size</th>
-					    <th>Date</th>
+					    <th>Manufacture Date</th>
 					    <th>Price</th>
+					    <th>Track Number</th>
 				  </tr>
 				  </thead>
 				  <tbody id="equipment_tbody">
-					<tr th:each="equipment : ${project.equipments}">
-						<td th:text="${equipment.name}"></td>
-						<td th:text="${equipment.size}"></td>
+
+				  
+				  
+				  
+				  
+				  
+					<tr  th:each="equipment : ${project.equipments}">
+						<td >
+							<div class="field">
+								<div class="ui fluid input">
+									<input type="text" name="name" disabled="disabled" th:value="${equipment.name}">
+								</div>
+							</div>
+						</td>
+						<td ><div class="ui fluid input"><input type="text" name="name" disabled="disabled" th:value="${equipment.size}"></div></td>
 						<td ><div class="ui fluid input"><input type="date" name="mannufacturDate" th:value="${equipment.mannufacturDate}"></div></td>
-						<td ><div  class="ui fluid input" ><input type="text" name="price" th:value="${equipment.price}"></div></td>
+						<td ><div class="field"><div  class="ui fluid input" ><input type="text" name="price" th:value="${equipment.price}"></div></div></td>
+						<td ><div  class="ui fluid input" ><input type="text" name="price" th:value="${equipment.trackNumber}"></div></td>
 					</tr>
 				  </tbody>
 				</table>
